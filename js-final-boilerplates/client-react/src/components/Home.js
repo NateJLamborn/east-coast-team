@@ -1,12 +1,13 @@
 import React from 'react'
 import Navbar from './Navbar';
-import ProductDisplay from './ProductDisplay';
+//import ProductDisplay from './ProductDisplay';
+import Products from './Products';
 
 export const Home = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <ProductDisplay></ProductDisplay>
+            <Products uri="http://localhost:3001/inventory/products"></Products>
         </div>
     )
 }

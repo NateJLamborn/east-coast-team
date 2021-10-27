@@ -1,0 +1,13 @@
+.container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: auto;
+    margin-top: 5px;
+    width: 200px
+
+}
+
+.display{
+    padding: 5px;
+    width: 150px;
+}
