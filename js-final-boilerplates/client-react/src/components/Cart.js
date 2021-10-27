@@ -48,7 +48,30 @@ export class Cart extends Component {
         this.getCart();
     }
 
-    render() {
+    listTitles() {
+        const cartItems = this.state.cartTitleList
+        return cartItems
+            .map((item) => <div key={item} className='titles'>{item}</div>)
+    }
+
+    listPrices() {
+        const cartPrices = this.state.cartPriceList
+        return cartPrices
+            .map((price) => <div key={price} className='prices'>{price}</div>)
+    }
+
+    getTotal() {
+        var cartPrices = this.state.cartPriceList
+        var total = 0
+        for(let i = 0; i < cartPrices.length; i++){
+            total = total + parseFloat(cartPrices[i])
+        }
+        return (
+            <div className='total'>{total}</div>
+        )
+    }
+
+    render() { 
         if (this.state.emptyCart === true){
             return (
                 <div>
@@ -60,6 +83,9 @@ export class Cart extends Component {
         return (
             <div>
                 <Navbar></Navbar>
+                {this.listTitles()} 
+                {this.listPrices()}
+                {this.getTotal()}
                 <button type='button' onClick={() => this.checkCartStatus()}>Test</button>
                 <button onClick={() => this.checkout()}>Check Out</button>
             </div>
