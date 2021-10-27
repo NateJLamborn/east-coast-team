@@ -17,17 +17,34 @@ export class Products extends Component {
         });
       };
 
-      addToCart = (id) => {
-        let currentCart = localStorage.getItem("Cart");
-        let whatToAdd;
-          if(!currentCart) {
-          whatToAdd = id;
+    addTitleToCart = (title) => {
+    let currentCartTitles = localStorage.getItem("CartTitles");
+    let whatToAdd;
+        if(!currentCartTitles) {
+            whatToAdd = title;
         } else {
-            whatToAdd = `${currentCart},${id}`;
+            whatToAdd = `${currentCartTitles},${title}`;
         }
-          localStorage.setItem("Cart", whatToAdd )
-      }
+            localStorage.setItem("CartTitles", whatToAdd )
+    }
+
+    addPriceToCart = (price) => {
+        let currentCartPrices = localStorage.getItem("CartPrices");
+        let whatToAdd;
+            if(!currentCartPrices) {
+                whatToAdd = price;
+            } else {
+                whatToAdd = `${currentCartPrices},${price}`;
+            }
+                localStorage.setItem("CartPrices", whatToAdd )
+        }
     
+    addToCart = (title, price) => {
+        this.addTitleToCart(title)
+        this.addPriceToCart(price)
+        alert(title + " added to cart!")
+    }
+        
     componentDidMount() {
         this.fetchProductData();
     }
@@ -38,7 +55,6 @@ export class Products extends Component {
         }
         const products = this.state.productData.map(product => (
             <div key={product.id} className='container text-center'>
-                <button onClick={() => {localStorage.removeItem("Cart")}}>remove storage</button>
                 <div className='row'>
                     <div className='col text-center'>
                         <em>{product.title}</em>
@@ -56,7 +72,7 @@ export class Products extends Component {
                 </div>
                 <div className='row'>
                     <div className='col text-center'>
-                        <button type='button' onClick={() => this.addToCart(product.id)} className="btn btn-primary btn-sm">Add to Cart</button>
+                        <button type='button' onClick={() => this.addToCart(product.title, product.price)} className="btn btn-primary btn-sm">Add to Cart</button>
                     </div>
                 </div>
             </div>

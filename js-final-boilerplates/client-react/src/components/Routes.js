@@ -8,6 +8,7 @@ import AddProduct from './AddProduct';
 import Cart from './Cart';
 
 import {Route, BrowserRouter as Router} from 'react-router-dom'
+import ThankYou from './ThankYou';
 
 export const Routes = () => {
     return (
@@ -20,6 +21,7 @@ export const Routes = () => {
                 <Route path='/profile' component={Profile}></Route>
                 <Route path='/AddProduct' component={AddProduct}></Route>
                 <Route path='/Cart' component={Cart}></Route>
+                <Route path='/ThankYou' component={ThankYou}></Route>
             </Router>
         </div>
     )
