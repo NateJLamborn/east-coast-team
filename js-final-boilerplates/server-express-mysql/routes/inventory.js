@@ -27,6 +27,28 @@ router.get('/whiteShirt', function (req, res, next){
       })
 })
 
+router.get('/products', function(req, res, next) {
+  models.product
+    .findAll({})
+    .then(productsFound => {
+      res.setHeader('Content-Type', 'application/json');
+      res.send(JSON.stringify(productsFound));
+    });
+});
+
+router.get('/product/:id', function(req, res, next) {
+  models.product
+    .findOne({
+      where: {
+        id: parseInt(req.params.id)
+      }
+    })
+    .then(productsFound => {
+      res.setHeader('Content-Type', 'application/json');
+      res.send(JSON.stringify(productsFound));
+    })
+})
+
 router.post('/addProduct', function (req, res, next){
     models.product
       .findOrCreate({
@@ -48,5 +70,18 @@ router.post('/addProduct', function (req, res, next){
         }
       });
 })
+
+router.delete("/products", function (req, res, next) {
+  models.product
+    .destroy({
+      where: { title: req.body.title }
+    })
+    .then(result => res.send("item deleted"))
+    .catch(err => { 
+      res.status(400); 
+      res.send("There was a problem deleting the item. Please make sure you are specifying the correct title."); 
+    }
+);
+});
 
 module.exports = router;
