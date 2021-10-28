@@ -1,0 +1,20 @@
+.contShopping{
+    margin: 5px
+}
+
+.shirt {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 160px;
+    height: 170px;
+}
+
+.description{
+    font-family: 'Roboto', sans-serif;
+    font-size: larger;
+}
+
+.center {
+    text-align: center;   
+}

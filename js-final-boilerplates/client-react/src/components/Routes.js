@@ -9,6 +9,9 @@ import Cart from './Cart';
 import ThankYou from './ThankYou';
 import AddtoCart from './AddtoCart';
 import RestockProduct from './RestockProduct';
+import ProductList from './ProductList';
+import WhiteShirt from './WhiteShirt';
+import BlackShirt from './BlackShirt';
 import {Route, BrowserRouter as Router} from 'react-router-dom'
 
 
@@ -26,6 +29,9 @@ export const Routes = () => {
                 <Route path='/ThankYou' component={ThankYou}></Route>
                 <Route path='/AddToCart' component={AddtoCart}></Route>
                 <Route path='/RestockProduct' component={RestockProduct}></Route>
+                <Route path='/OurProducts' component={ProductList}></Route>
+                <Route path='/WhiteShirt' component={WhiteShirt}></Route>
+                <Route path='/BlackShirt' component={BlackShirt}></Route>
             </Router>
         </div>
     )
