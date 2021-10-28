@@ -1,9 +1,30 @@
+@media only screen and (max-width: 800px) {
+    .cart {
+        width: 400px
+    }
+    .titles {
+        font-size: large;
+    }
+    .prices {
+        font-size: large;
+    }
+  }
+@media only screen and (min-width: 801px) {
+    .cart {
+        width: 800px
+    }
+    .titles {
+        font-size: xx-large;
+    }
+    .prices {
+        font-size: xx-large;
+    }
+}
 .cart {
     border: 1px solid #ddd;
     border-radius: 4px;
     margin: auto;
     margin-top: 5px;
-    width: 800px;
     padding: 5px;
     background-color: white;
 }
@@ -11,7 +32,6 @@
 .titles {
     -webkit-text-stroke: 1px black; 
     color: white;
-    font-size: xx-large;
 }
 
 .empty {
@@ -22,7 +42,6 @@
 .prices {
     -webkit-text-stroke: 1px black; 
     color: white;
-    font-size: xx-large;
 }
 
 .total {
