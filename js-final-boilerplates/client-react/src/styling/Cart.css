@@ -1,0 +1,36 @@
+.cart {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: auto;
+    margin-top: 5px;
+    width: 800px;
+    padding: 5px;
+    background-color: white;
+}
+
+.titles {
+    -webkit-text-stroke: 1px black; 
+    color: white;
+    font-size: xx-large;
+}
+
+.empty {
+    margin-top: 10px;
+    font-size: xx-large;
+}
+
+.prices {
+    -webkit-text-stroke: 1px black; 
+    color: white;
+    font-size: xx-large;
+}
+
+.total {
+    -webkit-text-stroke: 1px black; 
+    color: white;
+    font-size: large;
+}
+
+.header{
+    text-align: center;
+}

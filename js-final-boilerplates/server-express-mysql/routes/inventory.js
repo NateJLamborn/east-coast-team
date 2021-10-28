@@ -71,6 +71,17 @@ router.post('/addProduct', function (req, res, next){
       });
 })
 
+router.put('/products/:id', function(req, res, next){
+  let productId = parseInt(req.params.id);
+  models.product
+    .update(req.body, { where: { id: productId } })
+    .then(result => res.send("quantity updated"))
+    .catch(err => {
+      res.status(400);
+      res.send("There was a problem adjusting the quantity.");
+    });
+})
+
 router.delete("/products", function (req, res, next) {
   models.product
     .destroy({

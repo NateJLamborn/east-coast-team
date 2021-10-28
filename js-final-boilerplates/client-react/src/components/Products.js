@@ -39,12 +39,27 @@ export class Products extends Component {
                 localStorage.setItem("CartPrices", whatToAdd )
         }
     
-    addToCart = (title, price) => {
-        this.addTitleToCart(title)
-        this.addPriceToCart(price)
-        alert(title + " added to cart!")
+    changeQuantity = (id, quantity) => {
+        let address = "/inventory/products/" + id
+        axios.put((address), {quantity: (parseInt(quantity) - 1)})
+        this.reloadPage()
     }
         
+    addToCart = (title, price, id, quantity) => {
+        if(quantity !== 0){
+            this.addTitleToCart(title)
+            this.addPriceToCart(price)
+            this.changeQuantity(id, quantity)
+        }
+        else{
+            alert("Item out of stock!")
+        }
+    }
+       
+    reloadPage() {
+        window.location.href="http://localhost:3000/addtocart"
+    }
+
     componentDidMount() {
         this.fetchProductData();
     }
@@ -53,33 +68,37 @@ export class Products extends Component {
         if (this.state.productData.length === 0) {
             return <div>Failed to fetch data from server</div>;
         }
-        const products = this.state.productData.map(product => (
-            <div key={product.id} className='container text-center'>
-                <div className='row'>
-                    <div className='col text-center'>
-                        <em>{product.title}</em>
-                    </div>  
-                </div>
-                <div className='row'>
-                    <div className='col text-center'>
-                        <img src={product.imageUrl} alt="" className='display'></img>
+        const products = this.state.productData.map(product => 
+            (<div key={product.id} className='col products text-center'>
+                <div className='container item'>
+                    <div className='row'>
+                        <div className='col text-center'>
+                            <em className='title'>{product.title}</em>
+                        </div>  
                     </div>
-                </div>
-                <div className='row'>
-                    <div className='col text-center'>
-                        <em>${product.price}</em>
+                    <div className='row'>
+                        <div className='col text-center'>
+                            <img src={product.imageUrl} alt="" className='display'></img>
+                        </div>
                     </div>
-                </div>
-                <div className='row'>
-                    <div className='col text-center'>
-                        <button type='button' onClick={() => this.addToCart(product.title, product.price)} className="btn btn-primary btn-sm">Add to Cart</button>
+                    <div className='row'>
+                        <div className='col text-center'>
+                            <em className='price'>${product.price}</em>
+                        </div>
+                    </div>
+                    <div className='row'>
+                        <div className='col text-center'>
+                            <button type='button' onClick={() => this.addToCart(product.title, product.price, product.id, product.quantity)} className="btn btn-primary btn-sm">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
             </div>
     ));
         return (
-            <div>
-                {products}
+            <div className='container'>
+                <div className='row itemDisplay'>
+                    {products}
+                </div>
             </div>
         )
     }

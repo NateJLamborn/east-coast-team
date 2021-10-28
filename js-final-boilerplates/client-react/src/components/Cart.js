@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 //import axios from 'axios'
 import Navbar from './Navbar'
+import "../styling/Cart.css"
 
 export class Cart extends Component {
     constructor(props) {
@@ -14,14 +15,6 @@ export class Cart extends Component {
              cartTitleList: [],
              cartPriceList: []
         }
-    }
-    
-    checkCartStatus = () => {
-        console.log(this.state.emptyCart)
-        console.log(this.state.currentCartTitle)
-        console.log(this.state.currentCartPrices)
-        console.log(this.state.cartTitleList)
-        console.log(this.state.cartPriceList)
     }
 
     getCart = () => {
@@ -57,7 +50,7 @@ export class Cart extends Component {
     listPrices() {
         const cartPrices = this.state.cartPriceList
         return cartPrices
-            .map((price) => <div key={price} className='prices'>{price}</div>)
+            .map((price) => <div key={price} className='prices'>${price}</div>)
     }
 
     getTotal() {
@@ -67,7 +60,7 @@ export class Cart extends Component {
             total = total + parseFloat(cartPrices[i])
         }
         return (
-            <div className='total'>{total}</div>
+            <div className='total'>${total}</div>
         )
     }
 
@@ -76,18 +69,46 @@ export class Cart extends Component {
             return (
                 <div>
                     <Navbar></Navbar>
-                    <em>No items in Cart</em>
+                    <div className='container'>
+                        <div className='row'>
+                            <div className='col text-center'>
+                                <em className='empty'>No items in Cart</em>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )
         }
         return (
             <div>
                 <Navbar></Navbar>
-                {this.listTitles()} 
-                {this.listPrices()}
-                {this.getTotal()}
-                <button type='button' onClick={() => this.checkCartStatus()}>Test</button>
-                <button onClick={() => this.checkout()}>Check Out</button>
+                <h3 className='header'>Cart</h3>
+                <div className='cart'>
+                    <div className='row'>
+                        <div className='col-6'>
+                            {this.listTitles()} 
+                        </div>
+                        <div className='col-6 text-right'>
+                            {this.listPrices()}
+                        </div>
+                    </div>
+                    <hr color="black"></hr>
+                    <div className='row'>
+                        <div className='col-6'>
+                            <div className='total'>
+                                Total:
+                            </div>
+                        </div>
+                        <div className='col-6 text-right'>
+                            {this.getTotal()}
+                        </div>
+                    </div>
+                    <div className='row'>
+                        <div className='col text-center'>
+                            <button className="btn btn-primary btn-sm" onClick={() => this.checkout()}>Check Out</button>
+                        </div>
+                    </div>   
+                </div>
             </div>
         )
     }

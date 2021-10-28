@@ -6,9 +6,11 @@ import SignUp from './SignUp';
 import Profile from './Profile';
 import AddProduct from './AddProduct';
 import Cart from './Cart';
-
-import {Route, BrowserRouter as Router} from 'react-router-dom'
 import ThankYou from './ThankYou';
+import AddtoCart from './AddtoCart';
+import RestockProduct from './RestockProduct';
+import {Route, BrowserRouter as Router} from 'react-router-dom'
+
 
 export const Routes = () => {
     return (
@@ -22,6 +24,8 @@ export const Routes = () => {
                 <Route path='/AddProduct' component={AddProduct}></Route>
                 <Route path='/Cart' component={Cart}></Route>
                 <Route path='/ThankYou' component={ThankYou}></Route>
+                <Route path='/AddToCart' component={AddtoCart}></Route>
+                <Route path='/RestockProduct' component={RestockProduct}></Route>
             </Router>
         </div>
     )

@@ -10,29 +10,48 @@ export class AddProduct extends Component {
            price: "",
            imageUrl: "",
            description: "",
-           quantity: ""
+           quantity: "",
+           isAdmin: false
         }
       }
     
-      changeHandler = (e) => {
-        this.setState({[e.target.name]: e.target.value})
-      }
+    changeHandler = (e) => {
+      this.setState({[e.target.name]: e.target.value})
+    }
     
-      submitHandler = e => {
-        e.preventDefault()
-        console.log(this.state)
-        axios.post("/inventory/addProduct", this.state)
-          .then(response =>{
+    submitHandler = e => {
+      e.preventDefault()
+      console.log(this.state)
+      axios.post("/inventory/addProduct", this.state)
+        .then(response =>{
+          console.log(response)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+      window.location.href="http://localhost:3000/"
+    }
+
+    componentDidMount(){
+      axios.get('/users/profile')
+        .then(response => {
             console.log(response)
-          })
-          .catch(error => {
+            this.setState({isAdmin: response.data.Admin})
+        })
+        .catch(error => {
             console.log(error)
-          })
-        window.location.href="http://localhost:3000/"
-      }
+        })
+      console.log(this.state.isAdmin)
+    }
+    
+    checkAdmin(){
+      console.log(this.state.isAdmin)
+    }
+
     render() {
-        const { title, price, imageUrl, description, quantity } = this.state
-        return (
+        const { title, price, imageUrl, description, quantity, isAdmin} = this.state
+        if (isAdmin){
+          return (
             <div>
                 <Navbar></Navbar>
                 <div className='container-fluid form'>
@@ -66,6 +85,21 @@ export class AddProduct extends Component {
                 </div>
             </div>
         )
+        } else {
+          return (
+            <div>
+              <Navbar></Navbar>
+              <div className='container'>
+                <div className='row'>
+                  <div className='col text-center'>
+                    <h1>You must be an admin to add products.</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        }
+       
     }
 }
 

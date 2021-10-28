@@ -1,13 +1,39 @@
-.container {
-    border: 1px solid #ddd;
-    border-radius: 4px;
+.products {
     margin: auto;
     margin-top: 5px;
-    width: 200px
-
+    width: 200px;
 }
 
+.item {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    width: 200px
+}
+
+.itemDisplay{
+    margin-top: 5px;
+}
 .display{
     padding: 5px;
     width: 150px;
 }
+
+.title { 
+    color: black;
+    font-size: large;
+}
+
+.price { 
+    color: black;
+    font-size: medium;
+}
+
+.center {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin: auto;
+    width: 50%;
+    border: 3px solid white;
+    padding: 10px;
+  }
