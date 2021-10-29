@@ -12,6 +12,7 @@ import RestockProduct from './RestockProduct';
 import ProductList from './ProductList';
 import WhiteShirt from './WhiteShirt';
 import BlackShirt from './BlackShirt';
+import InventoryCheck from './InventoryCheck'
 import {Route, BrowserRouter as Router} from 'react-router-dom'
 
 
@@ -32,6 +33,7 @@ export const Routes = () => {
                 <Route path='/OurProducts' component={ProductList}></Route>
                 <Route path='/WhiteShirt' component={WhiteShirt}></Route>
                 <Route path='/BlackShirt' component={BlackShirt}></Route>
+                <Route path="/InventoryCheck" component={InventoryCheck}></Route>
             </Router>
         </div>
     )

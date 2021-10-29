@@ -31,7 +31,7 @@ export class Profile extends Component {
     logOut = () => {
         axios.get('/users/logout')
         this.setState({firstName: '', lastName: '', username: '', email: '', isLoggedIn: false})
-        window.location.href="http://localhost:3000/"
+        this.redirect()
     }
 
     logIn = () => {
@@ -44,6 +44,14 @@ export class Profile extends Component {
     
     restockProduct() {
         window.location.href="http://localhost:3000/restockProduct"
+    }
+
+    checkProduct() {
+        window.location.href="http://localhost:3000/inventoryCheck"
+    }
+
+    redirect(){
+        window.location.href="http://localhost:3000/"
     }
 
     render() {
@@ -87,6 +95,11 @@ export class Profile extends Component {
                             <div className='row'>
                                 <div className='col text-center'>
                                     <button onClick={() => this.restockProduct()} type='button' className="btn btn-primary btn-lg">Restock a Product</button>
+                                </div>
+                            </div>
+                            <div className='row'>
+                                <div className='col text-center'>
+                                    <button onClick={() => this.checkProduct()} type='button' className="btn btn-primary btn-lg">Restock a Product</button>
                                 </div>
                             </div>
                         </div>  
