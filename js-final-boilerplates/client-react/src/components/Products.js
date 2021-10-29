@@ -66,7 +66,9 @@ export class Products extends Component {
     render() {
         console.log(this.state.productData);
         if (this.state.productData.length === 0) {
-            return <div>Failed to fetch data from server</div>;
+            return <div className='container text-center'>
+                No products, currently in stock.
+                </div>;
         }
         const products = this.state.productData.map(product => 
             (<div key={product.id} className='col products text-center'>

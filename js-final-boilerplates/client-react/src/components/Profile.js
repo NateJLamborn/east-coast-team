@@ -99,7 +99,7 @@ export class Profile extends Component {
                             </div>
                             <div className='row'>
                                 <div className='col text-center'>
-                                    <button onClick={() => this.checkProduct()} type='button' className="btn btn-primary btn-lg">Restock a Product</button>
+                                    <button onClick={() => this.checkProduct()} type='button' className="btn btn-primary btn-lg">Check Product Inventory</button>
                                 </div>
                             </div>
                         </div>  
